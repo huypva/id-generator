@@ -1,0 +1,10 @@
+version: "3.4"
+services:
+  hello-world:
+    build: hello-world
+#    container_name: 'hello-world'
+    environment:
+      - spring_profiles_active=docker
+      - INFRA_HOST=host.docker.internal
+    ports:
+      - 8081-8083:8081
