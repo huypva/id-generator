@@ -29,7 +29,7 @@ class IdGeneratorPropertiesTest {
   void testProperties() {
     Assertions.assertNotNull(props.getDatasource());
     Assertions.assertEquals("com.mysql.cj.jdbc.Driver", props.getDatasource().getDriverClassName());
-    Assertions.assertEquals("jdbc:mysql://127.0.0.1:3306/dbworker", props.getDatasource().getJdbcUrl());
+    Assertions.assertEquals("jdbc:mysql://127.0.0.1:3306/id_generator", props.getDatasource().getJdbcUrl());
     Assertions.assertEquals("user", props.getDatasource().getUsername());
     Assertions.assertEquals("password", props.getDatasource().getPassword());
   }

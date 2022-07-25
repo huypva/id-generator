@@ -17,7 +17,7 @@ The example project for StringBoot service
 │   ...
 ├── infrastructure
 │   ├── Dockerfile
-|       init.sql
+|   ├── scripts/init.sql
 |
 └── README.md
 ```
@@ -75,38 +75,26 @@ mysql> select * from id_worker;
 
 - Clean & build project
 ```shell script
-$ ../mvnw clean install
+$ ./mvnw clean package
 ...
-```
-
-### Start services in docker 
-
-```shell script
-$ docker-compose -f ./docker-compose-service.yml -p spring-boot-service up -d
-```
-
-Run multiple instances
-
-```shell script
-$ docker-compose -f ./docker-compose-service.yml -p spring-boot-service up -d --scale hello-world=2
-```
-
-## Run testing
-
-```shell script
-curl http://localhost:8081/greet?name=World
-```
-
-## Stop project
-
-- Kill project if start in local mode
-- Stop infrastructure & services in docker
-
-```shell script
-$ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastructure down
-$ docker-compose -f ./docker-compose-service.yml -p spring-boot-service down
+[INFO] Parent ............................................. SUCCESS [  0.441 s]
+[INFO] id-generator ....................................... SUCCESS [ 30.034 s]
+[INFO] id-generator-starter ............................... SUCCESS [ 23.147 s]
+[INFO] id-generator-sample ................................ SUCCESS [  1.511 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  55.681 s
+[INFO] Finished at: 2022-07-25T17:38:00+07:00
+[INFO] ------------------------------------------------------------------------
 ```
 
 ## Run example
+
+```shell script
+$ cd id-generator-sample
+$ ../mvnw spring-boot:run
+...
+```
 
 ## Reference

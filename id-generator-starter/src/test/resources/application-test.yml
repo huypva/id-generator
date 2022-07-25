@@ -1,6 +1,6 @@
 id-generator:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    jdbc-url: jdbc:mysql://127.0.0.1:3306/dbworker
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/id_generator
     username: user
     password: password

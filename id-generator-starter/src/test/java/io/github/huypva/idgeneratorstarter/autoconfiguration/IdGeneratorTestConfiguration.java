@@ -16,7 +16,7 @@ public class IdGeneratorTestConfiguration {
 
   static {
     MYSQL_DB = new MySQLContainer<>("mysql:5.6")
-        .withDatabaseName("dbworker")
+        .withDatabaseName("id_generator")
         .withUsername("user")
         .withPassword("password")
         .withInitScript("scripts/init_mysql.sql");

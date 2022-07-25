@@ -1,5 +1,3 @@
-CREATE DATABASE IF NOT EXISTS `id_generator`;
-USE id_generator;
 CREATE TABLE config (
   id enum('1') NOT NULL DEFAULT '1' COMMENT 'Exactly one row in table' PRIMARY KEY,
   date_bits  TINYINT NOT NULL,
