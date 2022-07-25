@@ -75,17 +75,18 @@ mysql> select * from id_worker;
 
 - Clean & build project
 ```shell script
-$ ./mvnw clean package
+$ ./mvnw clean install
 ...
-[INFO] Parent ............................................. SUCCESS [  0.441 s]
-[INFO] id-generator ....................................... SUCCESS [ 30.034 s]
-[INFO] id-generator-starter ............................... SUCCESS [ 23.147 s]
-[INFO] id-generator-sample ................................ SUCCESS [  1.511 s]
+[INFO] 
+[INFO] Parent ............................................. SUCCESS [  0.698 s]
+[INFO] id-generator ....................................... SUCCESS [ 30.115 s]
+[INFO] id-generator-starter ............................... SUCCESS [ 21.489 s]
+[INFO] id-generator-sample ................................ SUCCESS [  1.599 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  55.681 s
-[INFO] Finished at: 2022-07-25T17:38:00+07:00
+[INFO] Total time:  54.501 s
+[INFO] Finished at: 2022-07-25T17:47:39+07:00
 [INFO] ------------------------------------------------------------------------
 ```
 
@@ -95,6 +96,13 @@ $ ./mvnw clean package
 $ cd id-generator-sample
 $ ../mvnw spring-boot:run
 ...
+2022-07-25 17:48:04.893  INFO 57525 --- [           main] i.g.h.idgeneratorsample.Application      : Parse id: {"id":"57702370226733056","lastDate":"2022-07-25","workerId":"1","sequence":"0"}
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.221 s
+[INFO] Finished at: 2022-07-25T17:48:04+07:00
+[INFO] ------------------------------------------------------------------------
 ```
 
 ## Reference
