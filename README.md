@@ -9,10 +9,15 @@ The example project for StringBoot service
 ## Project structure
 ```
 .
-├── hello-world
-│   ├── Dockerfile
+├── id-generator
 │   ...
-├── docker-compose.yaml
+├── id-generator-starter
+│   ...
+├── id-generator-sample
+│   ...
+├── infrastructure
+│   ├── Dockerfile
+|       init.sql
 |
 └── README.md
 ```
@@ -26,19 +31,51 @@ The example project for StringBoot service
 
 ## Start infrastructure
 
+- Start mysql in docker
+
 ```shell script
 $ cd infrastructure
-$ docker-compose up -d
+$ docker build --tag mysqldb .
+# docker rm container_id (if any)
+$ docker run  -p 3306:3306 --name mysqldb -d mysqldb
+$ cd ..
 ```
 
-## Start services
-### Start services in local
-
-- Build & start project
+- Check connection
 ```shell script
-$ cd hello-word
-$ ../mvnw clean package
-$ ../mvnw spring-boot:run
+$ mysql --host=127.0.0.1 --port=3306 --user=user --password=password
+mysql> use worker;
+...
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_worker |
++------------------+
+| id_config        |
+| id_worker        |
++------------------+
+2 rows in set (0.00 sec)
+mysql> select * from id_config;
++----+-----------+----------------+---------------+------------+
+| id | date_bits | worker_id_bits | sequence_bits | epoch_date |
++----+-----------+----------------+---------------+------------+
+| 1  |        15 |             28 |            20 | 2022-01-01 |
++----+-----------+----------------+---------------+------------+
+1 row in set (0.01 sec)
+mysql> select * from id_worker;
++----+------------+-----------+
+| id | last_date  | worker_id |
++----+------------+-----------+
+| 1  | 2022-07-25 |         0 |
++----+------------+-----------+
+1 row in set (0.01 sec)
+```
+
+## Build project
+
+- Clean & build project
+```shell script
+$ ../mvnw clean install
 ...
 ```
 
@@ -70,6 +107,6 @@ $ docker-compose -f ./docker-compose-infrastructure.yml -p spring-boot-infrastru
 $ docker-compose -f ./docker-compose-service.yml -p spring-boot-service down
 ```
 
-## Contribute
+## Run example
 
 ## Reference

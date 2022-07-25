@@ -1,0 +1,6 @@
+logging.pattern.console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5p [%t] %-20.20logger{19}: %m%n"
+spring:
+  profiles:
+    active: local
+  application:
+    name: "id-generator-starter"
