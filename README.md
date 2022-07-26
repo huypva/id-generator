@@ -1,8 +1,7 @@
 IdGenerator
 ==========================
 
-IdGenerator is a Java library to generate unique ids  
-It based on a part of [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/)
+IdGenerator is a Java library to generate unique ids. It based on a part of [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/)
 
 Like **Snowflake** algorithm, IdGenerator using 64 bits number(long)
 
