@@ -6,10 +6,6 @@ It based on a part of [Snowflake](https://github.com/twitter/snowflake) and [MyS
 
 Like **Snowflake** algorithm, IdGenerator using 64 bits number(long)
 
-| sign_bit | date_bits | worker_id_bits | sequence_bits |
-| :------- | :-------- | :------------- | :------------ |
-|        1 |        15 |             28 |            20 |
-
 ```
 +-----------+-----------+----------------+---------------+
 |  sign_bit | date_bits | worker_id_bits | sequence_bits |
