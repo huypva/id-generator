@@ -1,15 +1,38 @@
 IdGenerator
 ==========================
 
-IdGenerator is a Java library to genrate unique id. 
+IdGenerator is a Java library to generate unique ids
 It based on a part of [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/)
 
+Like **Snowflake** algorithm, IdGenerator using 64 bits number(long)
++-----------+-----------+----------------+---------------+
+|  sign_bit | date_bits | worker_id_bits | sequence_bits |
++-----------+-----------+----------------+---------------+
+|         1 |        15 |             28 |            20 | 
++-----------+-----------+----------------+---------------+
+
+* sign(1bit)  
+  The highest bit is always 0
+  
+* delta days (15 bit)
+  The next 15 bits, represents delta days since a customer epoch day(2022-01-01).
+  The maximum time will be 89 year from epoch day 
+  
+* worker id (28 bits)
+  The next 28 bits, represents the worker id, maximum value will be 260 million workers per day. 
+  IdGenerator uses a build-in database based to assign a new worker id when startup, or a first id of next day, or use exceed sequence numbers
+   
+* sequence (20 bits)
+  The last 20 bits, represents sequence within the worker id, maximum is one million sequence numbers per worker
+  
 ## Prerequisites
 - Make sure that you have Docker and Docker Compose installed
   - Windows or macOS:
     [Install Docker Desktop](https://www.docker.com/get-started)
   - Linux: [Install Docker](https://www.docker.com/get-started) and then
     [Docker Compose](https://github.com/docker/compose) 
+
+- [Java8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)+
 
 ## Getting Started
 
