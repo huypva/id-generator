@@ -1,37 +1,21 @@
-The example project for StringBoot service
+IdGenerator
+==========================
 
-<div align="center">
-    <img src="./assets/images/spring_boot_icon.png"/>
-</div>
-
-## Getting Started
-
-## Project structure
-```
-.
-├── id-generator
-│   ...
-├── id-generator-starter
-│   ...
-├── id-generator-sample
-│   ...
-├── infrastructure
-│   ├── Dockerfile
-|   ├── scripts/init.sql
-|
-└── README.md
-```
+IdGenerator is a Java library to genrate unique id. 
+It based on [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/).
 
 ## Prerequisites
 - Make sure that you have Docker and Docker Compose installed
   - Windows or macOS:
     [Install Docker Desktop](https://www.docker.com/get-started)
   - Linux: [Install Docker](https://www.docker.com/get-started) and then
-    [Docker Compose](https://github.com/docker/compose)
+    [Docker Compose](https://github.com/docker/compose) 
 
-## Start infrastructure
+## Getting Started
 
-- Start mysql in docker
+### Step 1: Install & start MySQL
+
+- Start mysql and create table in docker
 
 ```shell script
 $ cd infrastructure
@@ -71,9 +55,8 @@ mysql> select * from id_worker;
 1 row in set (0.01 sec)
 ```
 
-## Build project
+### Step 2: Install libraries in maven repository
 
-- Clean & build project
 ```shell script
 $ ./mvnw clean install
 ...
@@ -90,10 +73,46 @@ $ ./mvnw clean install
 [INFO] ------------------------------------------------------------------------
 ```
 
+### Step 3: Using in project
+
+- To add a dependency using Maven, use the following
+
+```xml
+  <dependency>
+    <groupId>io.github.huypva</groupId>
+    <artifactId>id-generator-starter</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </dependency>
+```
+- Configure datasource in your application.yml 
+
+```yaml
+id-generator:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://127.0.0.1:3306/id_generator
+    username: user
+    password: password
+```
+
+- @Autowired IdGenerator bean to use 
+
+```java
+  @Autowired
+  IdGenerator idGenerator;
+
+  //Generate id
+  long id = idGenerator.genId();
+
+  //Parse a id
+  log.info("Parse id: {}", idGenerator.parseId(id));
+  //Parse id: {"id":"57983845202395136","lastDate":"2022-07-26","workerId":"0","sequence":"0"}
+```
+
 ## Run example
 
 ```shell script
-$ cd id-generator-sample
+$ cd examples/id-generator-sample
 $ ../mvnw spring-boot:run
 ...
 2022-07-25 17:48:04.893  INFO 57525 --- [           main] i.g.h.idgeneratorsample.Application      : Parse id: {"id":"57702370226733056","lastDate":"2022-07-25","workerId":"1","sequence":"0"}
