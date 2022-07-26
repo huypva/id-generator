@@ -2,7 +2,7 @@ IdGenerator
 ==========================
 
 IdGenerator is a Java library to genrate unique id. 
-It based on [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/).
+It based on a part of [Snowflake](https://github.com/twitter/snowflake) and [MySQL](https://dev.mysql.com/downloads/mysql/)
 
 ## Prerequisites
 - Make sure that you have Docker and Docker Compose installed
@@ -113,14 +113,22 @@ id-generator:
 
 ```shell script
 $ cd examples/id-generator-sample
-$ ../mvnw spring-boot:run
+$ ../../mvnw clean package
 ...
-2022-07-25 17:48:04.893  INFO 57525 --- [           main] i.g.h.idgeneratorsample.Application      : Parse id: {"id":"57702370226733056","lastDate":"2022-07-25","workerId":"1","sequence":"0"}
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.641 s
+[INFO] Finished at: 2022-07-26T09:29:56+07:00
+[INFO] ------------------------------------------------------------------------
+$ ../../mvnw spring-boot:run
+...
+2022-07-26 09:32:45.797  INFO 9022 --- [           main] i.g.h.idgeneratorsample.Application      : Id: 57983845203443712
+2022-07-26 09:32:45.798  INFO 9022 --- [           main] i.g.h.idgeneratorsample.Application      : Parse id: {"id":"57983845203443712","lastDate":"2022-07-26","workerId":"1","sequence":"0"}
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  5.221 s
-[INFO] Finished at: 2022-07-25T17:48:04+07:00
+[INFO] Total time:  5.363 s
+[INFO] Finished at: 2022-07-26T09:32:45+07:00
 [INFO] ------------------------------------------------------------------------
 ```
 
