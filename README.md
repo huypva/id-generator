@@ -18,11 +18,11 @@ Like **Snowflake** algorithm, IdGenerator using 64 bits number(long)
   The highest bit is always 0
   
 * delta days (15 bit)  
-  The next 15 bits, represents delta days since a customer epoch day(2022-01-01).  
+  The next 15 bits, represents delta days since a customer epoch day(2022-01-01)  
   The maximum time will be 89 year from epoch day
   
 * worker id (28 bits)  
-  The next 28 bits, represents the worker id, maximum value will be 260 million workers per day.  
+  The next 28 bits, represents the worker id, maximum value will be 260 million workers per day  
   IdGenerator uses a build-in database based to assign a new worker id when startup, or a first id of next day, or use exceed sequence numbers  
    
 * sequence (20 bits)  
