@@ -19,6 +19,8 @@
     <modules>
         <module>id-generator</module>
         <module>id-generator-starter</module>
+        <module>examples/id-generator-sample</module>
+        <module>examples/id-generator-benchmark-sample</module>
     </modules>
 
     <properties>

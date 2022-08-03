@@ -157,4 +157,13 @@ $ ../../mvnw spring-boot:run
 [INFO] ------------------------------------------------------------------------
 ```
 
+## Benchmark
+
+- Result of benchmark by JMH  
+Benchmark                                Mode  Cnt     Score     Error   Units
+SpringBootBenchmark.fourThreadGenId     thrpt   25  4686.633 ± 304.468  ops/ms
+SpringBootBenchmark.genId               thrpt   25  6630.787 ± 224.306  ops/ms
+SpringBootBenchmark.sixteenThreadGenId  thrpt   25  4662.724 ± 251.617  ops/ms
+SpringBootBenchmark.twoThreadGenId      thrpt   25  4739.653 ± 318.882  ops/ms
+
 ## Reference
